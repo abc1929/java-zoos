@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -32,11 +33,25 @@ public class Zoo extends Auditable{
    private Set<ZooAnimal> animals = new HashSet<>();
 
 
+   @OneToMany(mappedBy = "zooid")
+   private List<Telephone> telephones = new ArrayList<>();
 
 
+   public Set<ZooAnimal> getAnimals() {
+      return animals;
+   }
 
+   public void setAnimals(Set<ZooAnimal> animals) {
+      this.animals = animals;
+   }
 
+   public List<Telephone> getTelephones() {
+      return telephones;
+   }
 
+   public void setTelephones(List<Telephone> telephones) {
+      this.telephones = telephones;
+   }
 
    public long getZooid() {
       return zooid;
